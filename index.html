@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="description" content="Memory Matching Game - Match all the cards and test your memory skills!">
+  <meta name="keywords" content="Match Mania, Memory Game, Matching Game, Puzzle, Fun">
+  <meta name="author" content="SOUROV CHANDRA ADIKARI">
+
+  <!-- Open Graph Meta Tags for Facebook and Social Media -->
+  <meta property="og:title" content="Match Mania - Fun Card Matching Game">
+  <meta property="og:description" content="Test your memory and match the pairs in this exciting card matching game. Play now and challenge yourself!">
+  <meta property="og:image" content="https://match-mania.vercel.app/assets/media-preview.jpg">
+  <meta property="og:url" content="https://match-mania.vercel.app/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Match Mania">
+
+  <!-- Twitter Card Meta Tags (Optional for Twitter sharing) -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Match Mania - Fun Card Matching Game">
+  <meta name="twitter:description" content="Test your memory and match the pairs in this exciting card matching game. Play now and challenge yourself!">
+  <meta name="twitter:image" content="https://match-mania.vercel.app/assets/logo.png">
+
+  <!-- Favicon for the site -->
+  <link rel="icon" href="/assets/logo.png">
+
+  <!-- External Stylesheets and Fonts -->
+  <link rel="stylesheet" href="/styles.css">
+
+  <!-- Title of the page -->
+  <title>Match Mania</title>
+</head>
+
+<body>
+
+  <header>
+    <h1>Match Mania</h1>
+    <div class="timer-container">
+      <p id="timer">Time: 0s</p>
+      <p id="bestTime">Best Time: 0s</p>
+    </div>
+  </header>
+
+  <section class="first-section">
+    <div class="game-container" id="gameContainer"></div>
+    <button class="reset-button" id="resetButton">Reset Game</button> <!-- Manual reset button -->
+  </section>
+
+  <footer id="footer">
+    <div class="footer-container">
+      <div class="brand">
+        <img src="/assets/author.png" alt="Brand Logo">
+        <div>
+          <h2>Sourov Chandra Adikari</h2>
+          <p>Devloper & Designer</p>
+        </div>
+      </div>
+      <div class="social-links">
+        <a href="#" aria-label="Facebook">Facebook</a>
+        <a href="#" aria-label="Instagram">Instagram</a>
+        <a href="#" aria-label="Whatsapp">Whatsapp</a>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; <span id="current-year"></span> Match Mania. All rights reserved.
+    </div>
+  </footer>
+
+  <script src="/script.js"></script>
+</body>
+</html>

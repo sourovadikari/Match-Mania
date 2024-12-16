@@ -1,0 +1,759 @@
+/* Universal box-sizing rule */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* HTML */
+html {
+  font-size: 62.5%;
+  /* This makes 1rem = 10px */
+  scroll-behavior: smooth;
+}
+
+/* Body styling */
+body {
+  width: 100%;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background-color: #333;
+}
+
+/* Rules Popup Styling */
+.rules-popup {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(0.5rem);
+  z-index: 10000;
+}
+
+.rules-content {
+  width: 65%;
+  padding: 3rem;
+  background: #000;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 1rem;
+}
+
+.rules-content h2 {
+  font-size: 3rem;
+  color: yellow;
+  margin-bottom: 1rem;
+}
+
+.rules-content p {
+  font-size: 2.5rem;
+  color: white;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.rules-content p span {
+  color: green;
+  font-weight: bold;
+}
+
+.rules-popup .start-button,
+.reset-button,
+.popup .close-popup-button,
+.popup .share-score-button {
+  display: flex;
+  color: white;
+  font-size: 2rem;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: auto;
+  transition: background 0.3s ease, color 0.3s ease, border 0.3s ease;
+}
+
+.rules-popup .start-button {
+  background: transparent;
+  border: 0.25rem solid green;
+}
+
+.rules-popup .start-button:hover {
+  background-color: green;
+}
+
+/* Header */
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: green;
+  border-bottom-left-radius: 3rem;
+  border-bottom-right-radius: 3rem;
+}
+
+header h1 {
+  text-align: center;
+  font-size: 3.5rem;
+  padding: 3rem 0 0;
+  color: #fff;
+}
+
+/* Timer Container */
+.timer-container {
+  width: 75%;
+  margin: 0 auto;
+  padding: 2rem 5rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.timer-container p {
+  font-size: 2.5rem;
+  color: #fff;
+  border: 0.2rem solid white;
+  padding: 1rem 2rem;
+  border-radius: 5rem;
+  font-weight: bold;
+}
+
+/* First Section */
+.first-section {
+  width: 80%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Game Container */
+.game-container {
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  padding: 3rem;
+  border: 0.5rem solid grey;
+  border-radius: 3rem;
+  margin: auto;
+  grid-gap: 1.5rem;
+}
+
+.card {
+  width: auto;
+  aspect-ratio: 1/1;
+  background: green;
+  display: grid;
+  place-items: center;
+  font-size: 4rem;
+  color: #fff;
+  user-select: none;
+  cursor: pointer;
+  border-radius: 1rem;
+  transition: transform 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.card.flipped {
+  background-color: white;
+  transform: rotateY(180deg);
+}
+
+.card.matched {
+  background: dodgerblue;
+  color: white;
+  cursor: default;
+  pointer-events: none;
+}
+
+.message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: yellow;
+  color: green;
+  text-align: center;
+  padding: 1.2rem;
+  font-size: 2.8rem;
+  font-weight: bold;
+  border-radius: 1rem;
+  box-shadow: 0 0.4rem 0.6rem rgba(0, 0, 0, 0.1);
+  z-index: 999;
+}
+
+/* Reset Button */
+.reset-button {
+  margin: 5rem auto;
+  background: transparent;
+  border: 0.25rem solid dodgerblue;
+}
+
+.reset-button:hover {
+  background: dodgerblue;
+  color: #fff;
+}
+
+/* Popup */
+.popup {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(1rem);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s, visibility 0.5s;
+}
+
+.popup.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Popup Content */
+.popup-content {
+  padding: 3rem;
+  width: 65%;
+  background: white;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  border-radius: 1rem;
+}
+
+.popup-content h2 {
+  font-size: 4rem;
+  margin-bottom: 3rem;
+}
+
+.popup-content img {
+  width: 20%;
+  aspect-ratio: 1/0.8;
+}
+
+.popup-content p {
+  font-size: 3rem;
+  margin-top: 3rem;
+}
+
+/* Congratulations Button Container */
+.congratulation-button-container {
+  width: 40%;
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+  margin: 3rem auto auto;
+}
+
+.popup .close-popup-button {
+  background: green;
+  border: 0.25rem solid green;
+}
+
+.popup .close-popup-button:hover {
+  background: transparent;
+  color: green;
+}
+
+.popup .share-score-button {
+  border: 0.25rem solid dodgerblue;
+  background: transparent;
+  color: dodgerblue;
+}
+
+.popup .share-score-button:hover {
+  background-color: dodgerblue;
+  color: #fff;
+}
+
+.form-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(0.5rem);
+}
+
+/* Shared form styles */
+.form-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 35rem;
+  padding: 3rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: white;
+}
+
+/* Player Info Form specific styles */
+.player-info-form {
+  background-color: #4CAF50;
+  /* Green background */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  /* Larger shadow */
+  padding: 2rem;
+  /* Padding in rem for better scaling */
+  border-radius: 8px;
+  max-width: 30rem;
+  margin: auto;
+}
+
+.player-info-form h3 {
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+  /* 24px */
+  color: #fff;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.player-info-form form {
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.player-info-form label {
+  font-size: 1rem;
+  /* 16px */
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.player-info-form input {
+  padding: 0.8rem;
+  /* 12.8px */
+  font-size: 1rem;
+  /* 16px */
+  margin-bottom: 1.2rem;
+  /* 19.2px */
+  border-radius: 4px;
+  border: 2px solid #fff;
+  width: 100%;
+  max-width: 25rem;
+  /* Responsive width */
+  outline: none;
+}
+
+.player-info-form input:focus {
+  border-color: #ffd700;
+  /* Gold color on focus */
+}
+
+.player-info-form button {
+  padding: 1rem 2rem;
+  /* 16px 32px */
+  background-color: #ffd700;
+  /* Gold background */
+  color: #333;
+  font-size: 1.1rem;
+  /* 17.6px */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 25rem;
+  /* Responsive width */
+  margin: 1rem 0 0;
+  transition: background-color 0.3s ease;
+}
+
+.player-info-form button:hover {
+  background-color: #ffcc00;
+  /* Lighter gold on hover */
+}
+
+.player-info-form button:active {
+  background-color: #e6b800;
+  /* Darker gold on button press */
+}
+
+/* Download Form specific styles */
+.download-form {
+  background-color: #3498db;
+  /* Blue background */
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  /* Larger shadow */
+  text-align: center;
+  max-width: 30rem;
+  margin: auto;
+}
+
+.download-form h3 {
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+  /* 24px */
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.download-form p {
+  font-family: 'Arial', sans-serif;
+  font-size: 1.1rem;
+  /* 17.6px */
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+
+.download-form form {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.download-form button {
+  padding: 1rem 2rem;
+  /* 16px 32px */
+  background-color: #fff;
+  color: #3498db;
+  /* Blue text color */
+  font-size: 1.1rem;
+  /* 17.6px */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  width: 12rem;
+  /* Fixed width for buttons */
+  border: 1px solid white;
+}
+
+.download-form button:hover {
+  background-color: #3498db;
+  color: #fff;
+  /* Change text color to white on hover */
+}
+
+.download-form button:active {
+  background-color: #2980b9;
+  /* Darker blue on button press */
+}
+
+
+
+/* Footer */
+footer {
+  background-color: #222;
+  color: #fff;
+  padding: 3rem 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.footer-container {
+  width: 75%;
+  margin: 0 auto;
+  padding: 0 5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.brand img {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  margin-right: 2rem;
+}
+
+.brand h2 {
+  margin: 0;
+  font-size: 2.5rem;
+  text-align: left;
+}
+
+.brand p {
+  margin: 0.5rem 0 0;
+  font-size: 1.8rem;
+  color: #ccc;
+  text-align: left;
+}
+
+.social-links {
+  display: flex;
+  gap: 1.5rem;
+  margin: auto;
+}
+
+.social-links a {
+  color: #fff;
+  font-size: 2rem;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.social-links a:hover {
+  color: #0d6efd;
+}
+
+.copyright {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #ccc;
+  margin: 2rem auto;
+}
+
+
+
+/* Media Queries */
+@media (max-width: 768px) {
+  html {
+    font-size: 55%;
+  }
+
+  header h1 {
+    padding: 2rem 0 0;
+  }
+
+  .game-container {
+    width: 75%;
+    padding: 2.5rem;
+    grid-gap: 1.5rem;
+    border: 0.2rem solid gray;
+    border-radius: 1rem;
+  }
+
+  .reset-button {
+    margin: 3rem auto;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-between;
+  }
+
+  .brand {
+    margin-bottom: 1rem;
+  }
+
+  .social-links {
+    justify-content: space-between;
+  }
+
+  .player-info-form,
+  .download-form {
+    padding: 1.5rem;
+    /* Reduce padding */
+  }
+
+  .player-info-form h3,
+  .download-form h3 {
+    font-size: 1.25rem;
+    /* 20px */
+  }
+
+  .player-info-form label,
+  .download-form p {
+    font-size: 0.9rem;
+    /* 14.4px */
+  }
+
+  .player-info-form input,
+  .player-info-form button {
+    font-size: 1rem;
+    /* 16px */
+  }
+
+  .download-form button {
+    padding: 0.8rem 1.5rem;
+    /* 12.8px 24px */
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 50%;
+  }
+
+  .header-background {
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+  }
+
+  header h1 {
+    font-size: 2.7rem;
+  }
+
+  .rules-popup .start-button,
+  .reset-button,
+  .popup .close-popup-button,
+  .popup .share-score-button {
+    font-size: 1.8rem;
+  }
+
+  .rules-content {
+    width: 80%;
+    padding: 2rem;
+  }
+
+  .rules-content h2,
+  .rules-content h3 {
+    font-size: 2.3rem;
+  }
+
+  .rules-content p {
+    font-size: 1.8rem;
+  }
+
+  .rules-content .start-button {
+    border: 0.15rem solid green;
+  }
+
+  .timer-container {
+    width: 100%;
+    padding: 1rem 5rem 2.5rem;
+  }
+
+  .timer-container p {
+    font-size: 1.7rem;
+    border: 0.15rem solid;
+  }
+
+  .first-section {
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .game-container {
+    top: 50%;
+    width: 100%;
+    padding: 1.5rem;
+    grid-gap: 1rem;
+  }
+
+  .card {
+    font-size: 2.8rem;
+    border-radius: 0.8rem;
+  }
+
+  .reset-button {
+    border: 0.15rem solid dodgerblue;
+  }
+
+  .message {
+    font-size: 2rem;
+  }
+
+  .popup-content {
+    top: 50%;
+    width: 80%;
+    padding: 2rem;
+  }
+
+  .popup-content h2 {
+    font-size: 2.5rem;
+  }
+
+  .popup-content img {
+    width: 30%;
+  }
+
+  .popup-content p {
+    margin-top: 2rem;
+    font-size: 2rem;
+  }
+
+  .congratulation-button-container {
+    margin: 2rem auto auto;
+    width: 60%;
+  }
+
+  .popup .close-popup-button {
+    border: 0.15rem solid green;
+  }
+
+  .popup .share-score-button {
+    border: 0.15rem solid dodgerblue;
+  }
+
+  footer {
+    padding: 1.5rem;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 0;
+  }
+
+  .brand h2 {
+    font-size: 2.3rem;
+  }
+
+  .brand p,
+  .copyright {
+    font-size: 1.7rem;
+  }
+
+  .brand img {
+    width: 6rem;
+    height: 6rem;
+  }
+
+  .copyright {
+    margin: 1rem auto;
+  }
+
+  .player-info-form,
+  .download-form {
+    padding: 1rem;
+    /* Reduce padding */
+    width: 90%;
+    /* Make form more fluid */
+  }
+
+  .player-info-form h3,
+  .download-form h3 {
+    font-size: 1rem;
+    /* 16px */
+  }
+
+  .player-info-form label,
+  .download-form p {
+    font-size: 0.85rem;
+    /* 13.6px */
+  }
+
+  .player-info-form input,
+  .player-info-form button {
+    font-size: 0.9rem;
+    /* 14.4px */
+  }
+
+  .download-form button {
+    padding: 0.8rem 1.2rem;
+    /* 12.8px 19.2px */
+  }
+}
