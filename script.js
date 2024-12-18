@@ -226,7 +226,7 @@ setTimeout(() => {
   popup.remove();
   resetButton.disabled = false; // Enable reset button after popup is closed
   resetGame(false); // Reset the game
-}, 500); // Match the transition duration (0.5s = 500ms)
+}, 2500); // Match the transition duration (0.5s = 500ms)
   });
 
   // Share button event listener (only if it's a new best time)
