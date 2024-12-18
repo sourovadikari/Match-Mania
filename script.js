@@ -628,7 +628,7 @@ function dataURLtoBlob(dataURL) {
 
 // Initialize the game
 const initGame = () => {
-  createBoard();
+  //createBoard();
   findCardsinContainer();
   startTimer();
   // Directly reference the elements to display the timer
@@ -638,6 +638,7 @@ const initGame = () => {
 // Start the app
 const startApp = () => {
   disclaimerContent();
+  createBoard();
   updateYear();
 };
 
