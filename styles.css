@@ -212,7 +212,7 @@ header h1 {
   backdrop-filter: blur(1rem);
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.5s, visibility 0.5s;
+  transition: opacity 2.5s, visibility 2.5s;
 }
 
 .popup.show {
