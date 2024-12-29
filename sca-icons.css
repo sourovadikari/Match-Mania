@@ -1,3 +1,5 @@
+@import url(/styles.css);
+
 @font-face{
   font-family: "sca";
   src: url('fonts/sca.eot?t=1708865856766'); /* IE9*/
